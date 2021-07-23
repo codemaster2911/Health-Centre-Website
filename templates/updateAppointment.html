@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block uahblock %}
+.ban3{
+    background-color:#cc7a00;
+}
+h1{
+    font-family: 'Cinzel', serif;
+  }
+  .ban4{
+      background-color:#006600;
+  }
+form{
+  font-family: 'Ubuntu', sans-serif;
+}
+
+{% endblock uahblock %}
+{% block body %}
+
+<center><h1><strong>Update Appointment : ID-{{id}}</strong></h1></center>
+<br>
+<br>
+<div class="container">
+<div class="row">
+<div class="col-sm-6 offset-3">
+<form action="" method='post'>
+{% csrf_token %}
+{{form.as_p}}
+<center><input type="submit" class="btn btn-success ban4" value="Update"></center>
+<br>
+<center><a class="btn btn-primary ban3" href="/appointment" role="button">Go Back</a></center>
+</form>
+</div>
+</div>
+</div>
+{% endblock body %}

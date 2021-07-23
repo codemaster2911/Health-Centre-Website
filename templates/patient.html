@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block phblock %}
+h1{
+  font-family: 'Cinzel', serif;
+}
+.bpn1{
+  background-color:#660000;
+}
+.pimg1{
+  height:220px;
+    width:270px;
+}
+.p-lg-5 {
+    padding: 1rem!important;
+}
+form{
+  font-family: 'Ubuntu', sans-serif;
+}
+table{
+  font-family: 'Ubuntu', sans-serif;
+}
+{% endblock phblock %}
+{% block pblock %}active{% endblock pblock %}
+{% block body %}
+<center><h1><strong>PATIENTS PANEL</strong></h1></center>
+
+<div class="container">
+<div class="row">
+<div class="col-sm-4 py-4 p-lg-5 offset-0">
+    <img class="pimg1" src="../static/img/ma5.jpg" alt="loading...">
+</div>
+<div class="col-sm-4 offset-0">
+<form action="" method='post'>
+{% csrf_token %}
+{{form.as_p}}
+<center><input type="submit" class="btn btn-success" value="Add Patient"></center>
+</form>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div class="col-sm-8 offset-2">
+<br>
+<br>
+<center><h1><strong>Patients</strong></h1></center>
+<br>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col"><center>Blood Group</center></th>
+      <th scope="col">Update</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for st in stu %}
+    <tr>
+      <th scope="row">{{st.id}}</th>
+      <td>{{st.name}}</td>
+      <td>{{st.email}}</td>
+      <td><center>{{st.blood_group}}</center></td>
+      <td><a class="btn btn-warning" href="{% url 'update_data3' st.id %}" role="button">Update</a></td>
+      <td>
+      <form action="{% url 'delete_data3' st.id %}" method="post">
+      {% csrf_token %}
+        <input type="submit" class="btn btn-danger bpn1" value="Delete">
+      </form>
+      
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+
+{% endblock body %}

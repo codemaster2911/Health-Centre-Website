@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block ahblock %}
+h1{
+  font-family: 'Cinzel', serif;
+}
+.ban1{
+  background-color:#660000;
+}
+.aimg1{
+  height:220px;
+    width:270px;
+}
+.p-lg-5 {
+    padding: 1rem!important;
+}
+form{
+  font-family: 'Ubuntu', sans-serif;
+}
+table{
+  font-family: 'Ubuntu', sans-serif;
+}
+{% endblock ahblock %}
+{% block ablock %}active{% endblock ablock %}
+{% block body %}
+<center><h1><strong>Appointments Panel</strong></h1></center>
+
+<div class="container">
+<div class="container">
+<div class="row">
+<div class="col-sm-4 py-4 p-lg-5 offset-0">
+    <img class="aimg1" src="../static/img/ma10.jpg" alt="loading...">
+    </div>
+<div class="col-sm-4 offset-0">
+<form action="" method='post'>
+{% csrf_token %}
+{{form.as_p}}
+<center><input type="submit" class="btn btn-success my-3" value="Add Appointment"></center>
+</form>
+</div>
+</div>
+</div>
+<div class="container my-4">
+<div class="row">
+<div class="col-sm-8 offset-2">
+<center><h1><strong>Current Appointments</strong></h1></center>
+<table class="table table-striped table-hover my-3">
+  <thead>
+      <th scope="col">ID</th>
+      <th scope="col">Doctor_Name</th>
+      <th scope="col">Patient_Name</th>
+      <th scope="col">Appointment_date</th>
+      <th scope="col">Update</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for st in stu %}
+    <tr>
+      <th scope="row">{{st.id}}</th>
+      <td>{{st.doctor_name}}</td>
+      <td>{{st.patient_name}}</td>
+      <td>{{st.date}}</td>
+      <td><a class="btn btn-warning" href="{% url 'update_data2' st.id %}" role="button">Update</a></td>
+      <td>
+      <form action="{% url 'delete_data2' st.id %}" method="post">
+      {% csrf_token %}
+        <input type="submit" class="btn btn-danger ban1" value="Delete">
+      </form>
+      
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+
+</div>
+{% endblock body %}

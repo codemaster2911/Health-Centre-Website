@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block uphblock %}
+.bpn3{
+    background-color:#cc7a00;
+}
+h1{
+    font-family: 'Cinzel', serif;
+  }
+  .bpn4{
+      background-color:#006600;
+  }
+form{
+  font-family: 'Ubuntu', sans-serif;
+}
+
+{% endblock uphblock %}
+{% block body %}
+            
+<center><h1><strong>Update Patient : ID-{{id}}</strong></h1></center>
+<br>
+<br>
+<div class="container">
+<div class="row">
+<div class="col-sm-6 offset-3">
+<form action="" method='post'>
+{% csrf_token %}
+{{form.as_p}}
+<center><input type="submit" class="btn btn-success bpn4" value="Update"></center>
+<br>
+<center><a class="btn btn-primary bpn3" href="/patient" role="button">Go Back</a></center>
+</form>
+</div>
+</div>
+</div>
+{% endblock body %}

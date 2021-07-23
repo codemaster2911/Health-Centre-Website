@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% block dhblock %}
+  h1{
+    font-family: 'Cinzel', serif;
+  }
+  .dimg{
+    height:183px;
+    width:275px;
+  }
+  .b1{
+    background-color:#660000;
+  }
+  form{
+  font-family: 'Ubuntu', sans-serif;
+}
+table{
+  font-family: 'Ubuntu', sans-serif;
+}
+{% endblock dhblock %}
+{% block dblock %}active{% endblock dblock %}
+{% block body %}
+<center><h1><strong>Doctors Panel</strong></h1></center>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 py-4 p-lg-5">
+    <img src="../static/img/dg1.jpg" alt="loading...">
+    </div>
+    <div class="col-sm-4">
+    <form class="row gx-3 gy-2 align-items-center px-5" action="" method='post'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <center><input type="submit" class="btn btn-success" value="Add Doctor"></center>
+    </form>
+    </div>
+    <div class="col-sm-4 py-4 px-4 p-lg-5">
+    <img class="dimg" src="../static/img/dg2.jpg" alt="loading...">
+    </div>
+  </div>
+</div> 
+<div class="container">
+<div class="row">
+<div class="col-sm-8 offset-2">
+<br>
+<br>
+<center><h1><strong>Available Doctors</strong></h1></center>
+<br>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Speciality</th>
+      <th scope="col">Update</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for st in stu %}
+    <tr>
+      <th scope="row">{{st.id}}</th>
+      <td>{{st.name}}</td>
+      <td>{{st.email}}</td>
+      <td>{{st.speciality}}</td>
+      <td><a class="btn btn-warning b2" href="{% url 'update_data' st.id %}" role="button">Update</a></td>
+      <td>
+      <form action="{% url 'delete_data' st.id %}" method="post">
+      {% csrf_token %}
+        <input type="submit" class="btn btn-danger b1" value="Delete">
+      </form>
+      
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+</div>
+</div> 
+
+
+
+{% comment %} <div class="container">
+<form class="row gx-3 gy-2 align-items-center px-5" action="" method='post'>
+{% csrf_token %}
+{{form.as_p}}
+<center><input type="submit" class="btn btn-success" value="Add"></center>
+</form>
+</div>
+<center><h1><strong>Available Doctors</strong></h1></center>
+<br>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Speciality</th>
+      <th scope="col">Update</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for st in stu %}
+    <tr>
+      <th scope="row">{{st.id}}</th>
+      <td>{{st.name}}</td>
+      <td>{{st.email}}</td>
+      <td>{{st.speciality}}</td>
+      <td><a class="btn btn-warning" href="{% url 'update_data' st.id %}" role="button">Update</a></td>
+      <td>
+      <form action="{% url 'delete_data' st.id %}" method="post">
+      {% csrf_token %}
+        <input type="submit" class="btn btn-danger" value="Delete">
+      </form>
+      
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+ {% endcomment %}
+{% endblock body %}

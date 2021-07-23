@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block shblock %}
+.logo{
+    {% comment %} background-color:coral; {% endcomment %}
+    font-family: 'Cinzel', serif;
+}
+.limg{
+    height:150px;
+    width:150px;
+    margin:10px;
+}
+.pimg{
+      height:300px;
+      width:450px;
+      
+    }
+    .nm{
+      text-align: center;
+      margin:20px 25px;
+      font-family: 'Cinzel', serif;
+      color:#1e7b1e;
+    }
+    .pfp1{
+      {% comment %} background:red; {% endcomment %}
+      width:500px;
+      height:400px;
+      padding:20px;
+      margin:20px auto;
+      margin-bottom:8px;
+      
+    }
+    .intro{
+        font-size:20px;
+        font-family: 'Cinzel', serif;
+        color:#0a290a;
+    }
+    .footer{
+        background-color:black;
+        height:180px;
+        color:white;
+        font-family: 'Cinzel', serif;
+    }
+    .lk{
+      text-decoration:None;
+      color:white;
+    }
+    .ck{
+      margin-left:90px;
+    }
+{% endblock shblock %}
+{% block homeblock %}active{% endblock homeblock %}
+{% block body %}
+<div class="logo">
+<center><img class="limg" src="../static/img/logo2.jpg" alt="loading..."></center>
+<center><h3><strong>INDIAN INSTITUTE OF TECHNOLOGY INDORE</strong></h3></center>
+</div>
+<div class="pfp1">
+  <img class="pimg" src="../static/img/hc2.jpg">
+  <h1 class="nm">Health Centre</h1>
+</div>
+<div class="container text-center intro my-3">
+Hello, Welcome to IIT Indore Health Centre Website
+<br>
+The Health Centre of the Indian Institute of Technology Indore provides dedicated health services to the institute community comprising of students, employees, their dependents and Institute Guests. The Health Centre offers Outpatient, Day care, Trauma and Emergency Care.
+<br>
+Django has been used to make this website
+</div>
+
+<footer class="footer">
+  <div class="container mt-3">
+    <div class="row py-4">
+        <div class="col-sm-4 text-center offset-2">
+          <div class="row mb-2">Location : IIT Indore,Madhya Pradesh</div>
+          <div class="row mb-2">Email : xyz@gmail.com</div>
+          <div class="row mb-2">Contact Info : +91-xxxxxxxxxx</div>
+          <div class="row mb-2">Emergency Contact : +91-yyyyyyyyyy</div>
+        </div>
+        <div class="col-sm-4 offset-2">
+        <div class="row">Quick Links</div>
+        <div class="row"><a class="lk" href="/home">Home</a></div>
+        <div class="row"><a class="lk" href="/doctors">Doctors</a></div>
+        <div class="row"><a class="lk" href="/patient">Patients</a></div>
+        <div class="row"><a class="lk" href="/appointment">Appointment</a></div>
+        </div>
+    </div>
+  </div>
+</footer>
+{% endblock body %}
